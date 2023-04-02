@@ -6,7 +6,7 @@ export default function Calculator() {
     const [userValue, setUserValue]=useState("")
 
     function onClickHandler(event){
-        setUserInput(event.target.value)
+        setUserInput((prev)=>prev.concat(event.target.value))
         console.log(event.target.value);
     }
 
@@ -14,6 +14,9 @@ export default function Calculator() {
         setUserValue(event.target.value)
     }
 
+    function clearNums(){
+        setUserInput("")
+    }
     return (
 
         <div>
@@ -38,7 +41,7 @@ export default function Calculator() {
             <br />
             
             <button value={0}  onClick={onClickHandler}>0</button>
-            <button value={"."}  onClick={onClickHandler}>C</button>
+            <button value={"."}  onClick={clearNums}>C</button>
             <button value={"="}  onClick={onClickHandler}>=</button>
             <button value={"/"}  onClick={onClickHandler}>/</button>
         </div>
